@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <title>{% block head %}{% endblock %}</title>
+</head>
+
+<body>
+<ul>
+  <li><a class="active" href="/inventory">Inventory</a></li>
+  <li><a href="/product">Product</a></li>
+  <li><a href="/location">Location</a></li>
+  <li><a href="/productmovement">Product Movement</a></li>
+</ul>
+{% block body %}{% endblock %}
+</body>
+
+<style>
+body{
+  font-family:Helvetica;
+  background-color:#F0F8FF;
+}
+ul {
+  margin: 0;
+  padding:0;
+  overflow: hidden;
+  background-color: #333;
+  font-size: 19;
+  box-shadow: 7px 7px 10px grey;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #4a8ff7;
+}
+{% block style %}
+{% endblock %}
+</style>
+
+<script>
+{% block script %}
+
+{% endblock %}
+</script>
+
+</html>

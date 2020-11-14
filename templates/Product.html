@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block head %}
+Product
+{% endblock %}
+
+{% block body %}
+
+<h1 style="margin-left:20px">Product</h1>
+    <label>&nbsp&nbsp&nbsp&nbsp&nbspManage the products in the Inventory</label>
+<button class="button" id="Button">Add Product</button><br>
+<div class="bgwhite">
+  <div class="close" id="close">+
+  </div>
+  <h2 style="margin:10;">Add Product</h2>
+  <form action="/product" name="prod_in" method="POST">
+    <input type="number" name="pid" id="pid" placeholder="Product Id">
+    <input type="text" name="pname" id="pname" placeholder="Product Name">
+    <input type="text" name="plid" id="plid" placeholder="Location Id">
+    <input type="text" name="plname" id="plname" placeholder="Location">
+    <input type="text" name="pqty" id="pqty" placeholder="Quantity">
+    <input type="text" name="pprice" id="pprice" placeholder="Price">
+    <button class="button">Submit</button>
+  </form>
+</div>
+
+<table>
+  <tr>
+    <td>Product Id</td>
+    <td>Product Name</td>
+    <td>Location Id</td>
+    <td>Location</td>
+    <td>Quantity</td>
+    <td>Price</td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+  {% for content in products %}
+    <tr>
+    <td>{{content.pid}}</td>
+    <td>{{content.pname}}</td>
+    <td>{{content.plid}}</td>
+    <td>{{content.plname}}</td>
+    <td>{{content.pqty}}</td>
+    <td>{{content.pr}}</td>
+    <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block style %}
+.close{
+position:absolute;
+top: 0;
+font-size: 42px;
+transform: rotate(45deg);
+cursor: pointer;
+right:14px;
+}
+input{
+width:75%;
+display: block;
+margin:15px auto;
+}
+
+.bgwhite{
+display: none;
+width:500px;
+height:300px;
+background-color: white;
+opacity: 1;
+margin:15px auto;
+border-radius: 4px;
+text-align: center;
+design-items:center;
+padding: 20px;
+position: relative;
+box-shadow: 7px 7px 10px grey;
+}
+
+table{
+margin-left:40px;
+margin-right:40px;
+border-collapse: collapse;
+  width: 90%;
+}
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.button {
+  background-color: #00BFFF;
+  border: none;
+  float:right;
+  color: #333;
+  padding: 15px 32px;
+  margin-right: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+box-shadow: 7px 7px 10px grey;
+}
+label{
+font-size:25px;
+}
+{% endblock %}
+
+{%block script%}
+
+document.getElementById('Button').addEventListener('click',function(){
+document.querySelector('.bgwhite').style.display='flex';
+});
+
+document.getElementById('close').addEventListener('click',function(){
+document.querySelector('.bgwhite').style.display='none';
+});
+{% endblock %}

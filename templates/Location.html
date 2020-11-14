@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block head %}
+Location
+{% endblock %}
+
+{% block body %}
+<h1 style="margin-left:20px">Location</h1>
+    <h2>&nbsp&nbsp&nbsp&nbsp&nbspManage the Location</h2>
+<button class="button" id="Button">Add Location</button><br>
+<div class="bgwhite">
+  <div class="close" id="close">+
+  </div>
+  <h2 style="margin:10;">Add Location</h2>
+  <form action="/location" name="loc_in" method="POST">
+    <input type="text" name="lid" id="lid" placeholder="Location Id">
+    <input type="text" name="lloc" id="lloc" placeholder="Location">
+    <input type="text" name="lname" id="lname" placeholder="Name">
+    <input type="text" name="ladd" id="ladd" placeholder="Address">
+    <button class="button">Submit</button>
+  </form>
+</div>
+<table>
+  <tr>
+    <td>Location Id</td>
+    <td>Location </td>
+    <td>Name</td>
+    <td>Address</td>
+    <td>Edit</td>
+    <td>Delete</td>
+      {% for content in products %}
+    <tr>
+    <td>{{content.loid}}</td>
+    <td>{{content.loc}}</td>
+    <td>{{content.loname}}</td>
+    <td>{{content.lad}}</td>
+    <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+  </tr>
+    {% endfor %}
+  </tr>
+</table>
+
+{% endblock %}
+
+{% block style %}
+.close{
+position:absolute;
+top: 0;
+font-size: 42px;
+transform: rotate(45deg);
+cursor: pointer;
+right:14px;
+}
+input{
+width:75%;
+display: block;
+margin:15px auto;
+}
+
+.bgwhite{
+display: none;
+width:500px;
+height:300px;
+background-color: white;
+opacity: 1;
+margin:15px auto;
+border-radius: 4px;
+text-align: center;
+design-items:center;
+padding: 20px;
+position: relative;
+box-shadow: 7px 7px 10px grey;
+}
+
+table{
+margin-left:150px;
+margin-right:40px;
+border-collapse: collapse;
+width: 75%;
+}
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.button {
+  background-color: #00BFFF;
+  border: none;
+  float:right;
+  color: #333;
+  padding: 15px 32px;
+  margin: 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+box-shadow: 7px 7px 10px grey;
+}
+label{
+font-size:25px;
+}
+{% endblock %}
+
+{%block script%}
+
+document.getElementById('Button').addEventListener('click',function(){
+document.querySelector('.bgwhite').style.display='flex';
+});
+
+document.getElementById('close').addEventListener('click',function(){
+document.querySelector('.bgwhite').style.display='none';
+});
+{% endblock %}

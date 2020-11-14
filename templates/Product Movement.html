@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block head %}
+Movement
+{% endblock %}
+
+{% block body %}
+<h1 style="margin-left:20px">Product Movement</h1>
+    <label>&nbsp&nbsp&nbsp&nbsp&nbspManage the Product Movement</label>
+<button class="button" id="Button">Move Product</button><br>
+<div class="bgwhite">
+  <div class="close" id="close">+
+  </div>
+  <h2 style="margin:10;">Add Location</h2>
+  <form action="/productmovement" name="prod_in" method="POST">
+    <input type="text" name="mfrom" id="mfrom" placeholder="From">
+    <input type="text" name="mto" id="mto" placeholder="To">
+    <input type="text" name="mpid" id="mpid" placeholder="Product Id">
+    <input type="text" name="mproduct" id="mproduct" placeholder="Product">
+    <input type="text" name="mqty" id="mqty" placeholder="Quantity">
+    <button class="button">Submit</button>
+  </form>
+</div>
+<table>
+  <tr>
+    <td>Time</td>
+    <td>From</td>
+    <td>To</td>
+    <td>Id</td>
+    <td>Product</td>
+    <td>Quantity</td>
+    <td>Edit</td>
+  </tr>
+  {% for content in products%}
+    <tr>
+    <td>{{content.mtime}}</td>
+    <td>{{content.mfrom}}</td>
+    <td>{{content.mto}}</td>
+    <td>{{content.mid}}</td>
+    <td>{{content.mprod}}</td>
+      <td>{{content.mqty}}</td>
+      <td><a href="#">Edit</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block style %}
+.close{
+position:absolute;
+top: 0;
+font-size: 42px;
+transform: rotate(45deg);
+cursor: pointer;
+right:14px;
+}
+input{
+width:75%;
+display: block;
+margin:15px auto;
+}
+
+.bgwhite{
+display: none;
+width:500px;
+height:300px;
+background-color: white;
+opacity: 1;
+margin:15px auto;
+border-radius: 4px;
+text-align: center;
+design-items:center;
+padding: 20px;
+position: relative;
+box-shadow: 7px 7px 10px grey;
+}
+
+table{
+margin-left:150px;
+margin-right:40px;
+border-collapse: collapse;
+width: 70%;
+}
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.button {
+  background-color: #00BFFF;
+  border: none;
+  float:right;
+  color: #333;
+  padding: 15px 32px;
+  margin-right: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+box-shadow: 7px 7px 10px grey;
+}
+label{
+font-size:25px;
+}
+{% endblock %}
+
+{%block script%}
+
+document.getElementById('Button').addEventListener('click',function(){
+document.querySelector('.bgwhite').style.display='flex';
+});
+
+document.getElementById('close').addEventListener('click',function(){
+document.querySelector('.bgwhite').style.display='none';
+});
+{% endblock %}

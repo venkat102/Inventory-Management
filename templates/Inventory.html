@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+Inventory
+{% endblock %}
+
+{% block body %}
+
+<h1 style="margin-left:20px">Inventory</h1>
+<h3 align="left">&nbsp&nbsp&nbsp&nbsp&nbspItems in the Inventory</h3><br>
+<form method="get">
+<table>
+  <tr>
+    <td>Product Id</td>
+    <td>Product Name</td>
+    <td>Location Id</td>
+    <td>Location</td>
+    <td>Quantity</td>
+    <td>Price</td>
+  </tr>
+    {% for content in products %}
+    <tr>
+    <td>{{content.pid}}</td>
+    <td>{{content.pname}}</td>
+    <td>{{content.plid}}</td>
+    <td>{{content.plname}}</td>
+    <td>{{content.pqty}}</td>
+    <td>{{content.pr}}</td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+
+{% endblock %}
+
+{% block style %}
+
+table{
+margin-left:40px;
+margin-right:40px;
+border-collapse: collapse;
+  width: 90%;
+}
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+{% endblock %}
